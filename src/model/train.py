@@ -14,6 +14,7 @@ def main(args):
     # TO DO: enable autologging
     import mlflow
     import mlflow.sklearn
+    mlflow.set_experiment("diabetes-local-training")
 
     mlflow.autolog()
 
@@ -46,8 +47,8 @@ def split_data(df, test_size=0.25, random_state=42):
 
     Assumes the target variable is in the 'label' column.
     """
-    X = df.drop('label', axis=1)
-    y = df['label']
+    X = df.drop('Diabetic', axis=1)
+    y = df['Diabetic']
     return train_test_split(X, y, test_size=test_size, random_state=random_state)
 
 
